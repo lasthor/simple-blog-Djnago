@@ -1,0 +1,17 @@
+{% extends 'friendship_systeme/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <ul class="list-group">
+            {% for  request_sent in MY_requests%}
+            <li class="list-group-item d-flex justify-content-between">{{request_sent.to_user.username}}
+            <div>
+                <button type="button" class="btn btn btn-secondary" data-user-id={{user.id}}><i class="bi bi-person-x"> cancel</i></button>
+            </div>
+        </li>
+            {% endfor %}
+        </ul>
+    </div>
+  </div>
+{% endblock content %}

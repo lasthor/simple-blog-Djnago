@@ -1,0 +1,90 @@
+{% extends 'blog_app/home.html' %}
+{% load static %}
+{% block head_section %}
+<link rel="stylesheet" href="{%static "css/style.css"%}">
+
+{% endblock head_section %}
+
+
+
+
+
+{% block post %}
+
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <img src="/media/profile_picture.jpg" class="rounded-circle mx-auto d-block mb-3" width="150" height="150">
+              <h4 class="card-title text-center">{{user.username}}</h4>
+              
+              <p class="card-text text-center"><a href="#" class="btn btn-instagram">followers {{user_followers_count}}</a></p>
+              <p class="card-text text-center"><a href="#" class="btn btn-instagram">following {{user_who_is_following_count}}</a></p>
+             
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">About Me</h4>
+              <hr>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat, sapien a maximus hendrerit, ex velit commodo nulla, eu molestie lectus lacus vel mauris. Sed sagittis quam a sapien ultrices pharetra. Etiam ut arcu ac enim iaculis congue.</p>
+              <p class="card-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam vel quam eget sapien posuere pretium et non enim. Donec convallis bibendum risus ac euismod.</p>
+              <p class="card-text">Phasellus pharetra risus sit amet urna lacinia, in facilisis augue bibendum. Nam tempor quam a augue consectetur, ut egestas sapien euismod. Donec aliquam, lorem ac bibendum eleifend, eros odio feugiat augue, vel commodo velit velit quis est.</p>
+            </div>
+          </div>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h4 class="card-title">My Posts</h4>
+              <hr>
+                <div class="row">
+              {% for post in  my_post %}
+                  <div class="col-md-12">
+                    <div class="card mb-3">
+                      <img src="/media/post_image_1.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">{{post.author}}</h5>
+                        <span class="date">{{post.date_created |date:"d-m-y"}}</span>
+                        <hr>
+                        <p class="card-text">{{post.text}}</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                      </div>
+                    </div>
+                  </div>
+              {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock post %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

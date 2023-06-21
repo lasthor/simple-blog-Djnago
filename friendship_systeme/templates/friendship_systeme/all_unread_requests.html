@@ -1,0 +1,18 @@
+{% extends 'friendship_systeme/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <ul class="list-group">
+            {% for  request_sent in all_unread_requests%}
+            <li class="list-group-item d-flex justify-content-between">{{request_sent.from_user.username}}
+            <div>
+                <button type="button" class="btn btn-danger" data-user-id={{request_sent.from_user.id}}><i class="bi bi-person-x"> rejected</i></button>
+                <button type="button" class="btn btn btn-primary" data-user-id={{request_sent.from_user.id}}><i class="bi bi-person-check-fill"> accept</i></button>
+            </div>
+        </li>
+            {% endfor %}
+        </ul>
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'blog_app/home.html' %}
+{% load static %}
+{% block post %}
+<div class="card">
+    <div class="card-header">
+      <h5>Friends Suggestions</h5>
+    </div>
+        <div class="card-body">
+            <ul class="list-unstyled">
+                    {% for usr_sugg in users %}
+                    <li class="media my-4">
+                        <img src="https://via.placeholder.com/64x64" class="mr-3" alt="...">
+                        <div class="media-body">
+                            <h6 class="mt-0 mb-1">{{usr_sugg.username}}</h6>
+                            <button type="button" class="btn btn-sm btn-primary" id ="btn-sm" data-user-id="{{ usr_sugg.id }}">follow</button>
+                        </div>
+                    </li>
+                    {% endfor %}    
+                    
+            </ul>
+        </div>
+</div>
+  
+{% endblock post %}
+
+
+
+
+
+
+{%block script_section%} 
+<script src="{% static "javascripts/friends_sugg.js"%}"></script>
+{%endblock script_section%}

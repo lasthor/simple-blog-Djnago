@@ -1,0 +1,27 @@
+{% extends 'friendship_systeme/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <ul class="list-group">
+            {% for  user in  all_users%}
+            <li class="list-group-item d-flex justify-content-between">{{user.username}}
+            <div>
+                <button type="button" class="btn btn-secondary ml-1"><i class="bi bi-person-x"> cancle</i></button>
+                <button type="button" class="btn btn-primary" data-user-id={{user.id}}><i class="bi bi-person-fill-add"> add</i></button>
+            </div>
+        </li>
+            {% endfor %}
+        </ul>
+    </div>
+  </div>
+{% endblock content %}
+
+
+
+
+
+
+
+{% block javascirpts %}<script src="{% static "jsjs/add.js" %}"></script>{% endblock javascirpts %}
