@@ -50,8 +50,9 @@ def sent_request(request):
 
 
 def unread_requests_view(request):
-    all_unread_requests = Friend.objects.unread_requests(user=request.user)
-    print(FriendshipRequest.objects.all())
+    #all_unread_requests = Friend.objects.unread_requests(user=request.user)#its not working good
+    all_unread_requests = FriendshipRequest.objects.filter(to_user=request.user.id)
+    print(all_unread_requests)
     response = {
         'all_unread_requests':all_unread_requests
     }
