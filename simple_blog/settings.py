@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'blog_app',
     "friendship",
-    "friendship_systeme"
+    "friendship_systeme",
+    'encrypted_model_fields',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+#AUTH_USER_MODEL = 'friendship_systeme.CustomUser'

@@ -7,4 +7,6 @@ urlpatterns = [
     path('add_friend',views.add_friend,name='add_friend'),
     path('sent_request',views.sent_request,name='sent_request'),
     path('unread_requests_view',views.unread_requests_view,name='unread_requests_view'),
+    path('accept',views.accept,name='accept'),
+    path('reject',views.reject,name='reject'),
 ]

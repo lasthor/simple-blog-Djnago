@@ -6,16 +6,18 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 from django.db.models import FilteredRelation, Q
+from django.utils.http import urlsafe_base64_encode
 
 
 
 def all_users(request):
     all_users = User.objects.exclude(pk=request.user.id)
+    
     list_users ={
         'all_users':all_users,
-
     }
     return render(request,'friendship_systeme/list_frindes.html',list_users)
+    
 
 @csrf_exempt
 def add_friend(request):
@@ -40,7 +42,6 @@ def sent_request(request):
     
     ''' print(my_requests[0].from_user)
     print(my_requests[0].to_user)'''
-    print(FriendshipRequest._meta.fields)
     _requests_= {
         'MY_requests':my_requests,
     }
@@ -50,7 +51,7 @@ def sent_request(request):
 
 def unread_requests_view(request):
     all_unread_requests = Friend.objects.unread_requests(user=request.user)
-    print(Friend._meta.fields)
+    print(FriendshipRequest.objects.all())
     response = {
         'all_unread_requests':all_unread_requests
     }
@@ -58,7 +59,28 @@ def unread_requests_view(request):
     return render(request , 'friendship_systeme/all_unread_requests.html' , response)
 
 
+@csrf_exempt
+def accept(request):
+    if request.method =='POST':
 
+        other_user = request.POST.get('user_to_accept')
+        friend_request = FriendshipRequest.objects.get(from_user=other_user, to_user=request.user.id)
+        friend_request.accept()
+        print(FriendshipRequest.objects.all())
+
+        return JsonResponse({'messge':f'{request.user.id} and {other_user} are friends now'})
+
+
+@csrf_exempt
+def reject(request):
+    if request.method =='POST':
+
+        other_user = request.POST.get('usr_uuid')
+        friend_request = FriendshipRequest.objects.get(from_user=other_user, to_user=request.user.id)
+        friend_request.delete()
+        print(FriendshipRequest.objects.all())
+
+        return JsonResponse({'messge':f'{request.user.id} reject the user {other_user}'})
     
 
     
