@@ -1,4 +1,21 @@
-$( ".btn-primary" ).click(
+var usrs = $(".btn-primary");
+//localStorage.setItem("users", usrs);
+//console.log(localStorage.getItem("users"));
+
+for (i of $(".btn-primary"))
+{
+    usrs.push($(i).data('user-id'));
+    i.removeAttribute('data-user-id');
+
+};
+console.log(usrs);
+
+
+
+
+//$(".btn").removeAttribute("data-user-id");
+
+$(".btn-primary").click(
     function() {
 
       var usr = $(this).data('user-id');
@@ -16,7 +33,8 @@ $( ".btn-primary" ).click(
 
             success:function (respons)
             {
-              console.log(respons)
+                console.log(respons);
+                window.location.reload();
             },
            
            }
@@ -49,7 +67,8 @@ function()
             success:function (respons)
             {
             
-            console.log(respons)
+                console.log(respons);
+                window.location.reload();
             
             },
 

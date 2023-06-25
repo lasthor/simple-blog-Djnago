@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "friendship",
     "friendship_systeme",
     'encrypted_model_fields',
+    'django_bleach',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
+            'autoescape': False,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',

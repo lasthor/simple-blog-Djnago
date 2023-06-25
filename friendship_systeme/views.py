@@ -79,7 +79,6 @@ def reject(request):
         other_user = request.POST.get('usr_uuid')
         friend_request = FriendshipRequest.objects.get(from_user=other_user, to_user=request.user.id)
         friend_request.delete()
-        print(FriendshipRequest.objects.all())
 
         return JsonResponse({'messge':f'{request.user.id} reject the user {other_user}'})
     
