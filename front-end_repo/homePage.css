@@ -93,16 +93,4 @@
     height: 200px;
     width: 278px;
   }
-  section{
-    display: flex;
-    height: 100%;
-    width: calc(100vh-350px);
-  }
-  .card:hover{
-    background-color: #e5e5e5;
-  }
-  .btn-card{
-    display: flex;
-    width: 270px;
-    margin: 4px;
-  }
+  
